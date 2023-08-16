@@ -1,0 +1,53 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "macOS",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "args": ["-d", "macos"]
+        },
+        {
+            "name": "iPhone 14 Pro Max",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "args": ["-d", "286BF3F6-B930-4DD8-B12A-91252C23F572"]
+        },
+        {
+            "name": "Pixel 3a API 33",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "args": ["-d", "emulator-5554"]
+        },
+        {
+            "name": "samsung-A53",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "args": ["-d", "R5CT314KGAD",]
+        },
+        {
+            "name": "oauth2example",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "oauth2example (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "oauth2example (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

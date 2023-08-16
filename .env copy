@@ -1,0 +1,5 @@
+### AUTENTIKA INFO +++++++++++++++++++++++++++++++++
+CLIENT_ID = 'sdffdfdgdfsgdfgd' #producao
+CLIENT_SECRET = 'dfgdfsgdsfgdgdsgds' #producao
+REDIRECT_URL = 'com.ejst.flutter.oauth2example://login-callback'
+DISCOVER_URL = 'https://autentika.gov.cv/endpointpersonalizado/oauth2/oidcdiscovery/.well-known/openid-configuration'
