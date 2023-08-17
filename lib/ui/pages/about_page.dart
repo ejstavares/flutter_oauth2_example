@@ -37,7 +37,7 @@ class AboutPage extends StatelessWidget {
               child: Image.asset("assets/images/autentika.png", height: 30),
             ),
             const Text(
-                'This APP demo aims to help in testing the configuration in the integration with Auth0 platform, such as AUTENTICA.GOV.CV.'),
+                'This APP demo aims to help in testing the configuration in the integration with Auth0 platform, such as AUTENTIKA.GOV.CV.'),
             const SizedBox(
               height: 20,
             ),

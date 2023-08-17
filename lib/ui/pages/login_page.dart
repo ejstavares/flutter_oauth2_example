@@ -122,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
         clientSecret: _getConfig.clientSecret,
         discoveryUrl: _getConfig.discoverURL,
         //scopes: ['openid', 'profile', 'email', 'offline_access', 'api'],
-        scopes: [
+        scopes: <String>[
           'openid',
           'profile',
           'email',
@@ -133,13 +133,13 @@ class _LoginPageState extends State<LoginPage> {
       Utils.logger.i(
           "_authTokenRequestData.redirectUrl::::: ${_authTokenRequestData.redirectUrl}");
       // show that we can also explicitly specify the endpoints rather than getting from the details from the discovery document
-      /*final AuthorizationTokenResponse? result =
+      final AuthorizationTokenResponse? result =
           await _appAuth.authorizeAndExchangeCode(_authTokenRequestData);
 
       Utils.logger.i("token access::::: ${result?.accessToken}");
       if (result != null) {
         Utils.logger.i("accessToken: ${result.scopes}");
-      }*/
+      }
 
       var infoResponse = await getUserInfo(
           accessToken: 'caeaff90-6bb2-3748-a202-79d580601a25');
