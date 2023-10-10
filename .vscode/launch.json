@@ -33,6 +33,13 @@
             "args": ["-d", "R5CT314KGAD",]
         },
         {
+            "name": "adb A53",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "args": ["-d", "adb-R5CT314KGAD-6o31MK._adb-tls-connect._tcp.",]
+        },
+        {
             "name": "oauth2example",
             "request": "launch",
             "type": "dart"

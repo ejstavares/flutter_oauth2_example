@@ -70,11 +70,18 @@ class _SettingsPageState extends State<SettingsPage> {
                       padding: const EdgeInsets.all(8),
                       child: RichText(
                         text: TextSpan(
-                          text: 'Este DEMO utiliza a plataforma ',
+                          text: 'Este DEMO poderá utilizar a plataforma ',
                           style: const TextStyle(
                             color: Colors.black,
                           ),
                           children: [
+                            TextSpan(
+                                text: 'KEYCLOAK',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.purple.shade900)),
+                            TextSpan(
+                                text: ' ou ',),
                             TextSpan(
                                 text: 'AUTENTIKA.GOV.CV',
                                 style: TextStyle(

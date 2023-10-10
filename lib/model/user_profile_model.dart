@@ -4,8 +4,9 @@ class UserProfileModel {
   String? email;
   String? sub;
   String? token;
+  String? idToken;
 
-  UserProfileModel({this.id, this.name, this.email, this.sub, this.token});
+  UserProfileModel({this.id, this.name, this.email, this.sub, this.token, this.idToken});
 
   factory UserProfileModel.fromJson(Map<String, dynamic> json) =>
     UserProfileModel(
@@ -14,6 +15,7 @@ class UserProfileModel {
       email: json['email'] as String?,
       sub: json['sub'] as String?,
       token: json['token'] as String?,
+      idToken: json['idToken'] as String?,
     );
 
   Map<String, dynamic> toJson() =>   <String, dynamic> {
@@ -22,6 +24,7 @@ class UserProfileModel {
     'email': email,
     'sub': sub,
     'token': token,
+    'idToken': idToken,
   };
 }
 

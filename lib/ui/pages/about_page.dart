@@ -27,17 +27,18 @@ class AboutPage extends StatelessWidget {
               'Demo with:',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            Container(
-              margin: const EdgeInsets.only(bottom: 40),
-              constraints: const BoxConstraints(maxHeight: 45),
-              height: 40,
-              width: 200,
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(20)),
-              child: Image.asset("assets/images/autentika.png", height: 30),
+            Image.asset("assets/images/logo.png", height: 40),
+            const SizedBox(
+              height: 30,
+              child: Text('OR'),
             ),
+            Image.asset(
+              "assets/images/autentika.png",
+              height: 30,
+            ),
+            SizedBox(height: 40,),
             const Text(
-                'This APP demo aims to help in testing the configuration in the integration with Auth0 platform, such as AUTENTIKA.GOV.CV.'),
+                'This APP demo aims to help in testing the configuration in the integration with Auth0 platform, such as KEYCLOAK or AUTENTIKA.GOV.CV.'),
             const SizedBox(
               height: 20,
             ),

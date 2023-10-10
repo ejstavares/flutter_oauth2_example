@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_appauth/flutter_appauth.dart';
+import 'package:oauth2example/helpers/env.dart';
 import 'package:oauth2example/services/get_storage_helper.dart';
 import 'package:oauth2example/ui/pages/about_page.dart';
 import 'package:oauth2example/ui/pages/login_page.dart';
@@ -21,19 +23,6 @@ class _HomePageState extends State<HomePage> {
 
   ///////
   int _selectedIndex = 0;
-  final _navBarColor = [
-    Colors.orange[100],
-    Colors.purple[100],
-    Colors.blue[100],
-  ];
-  final _navBarTextColor = [
-    Colors.orange[900],
-    Colors.purple[900],
-    Colors.blue[900],
-  ];
-
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
 
   ///////
   @override
@@ -113,13 +102,30 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> logoutAction() async {
-    //await auth0.webAuthentication(scheme: appScheme).logout();
+    try {
+      final FlutterAppAuth _appAuth = const FlutterAppAuth();
 
-    GetStorageHelper.removeCurrentUser();
+      final AuthorizationServiceConfiguration _serviceConfiguration = 
+        AuthorizationServiceConfiguration(
+          authorizationEndpoint: Env.AUTHORIZATION_ENDPOINT,
+          tokenEndpoint: Env.TOKEN_ENDPOINT,
+          endSessionEndpoint: Env.END_SESSION_ENDPOINT,
+        );
+      
+      var _userInfo = GetStorageHelper.getCurrentUser();
 
-    setState(() {
-      userData = UserProfileModel();
-    });
+      await _appAuth.endSession(EndSessionRequest(
+          idTokenHint: _userInfo?.idToken??'',
+          postLogoutRedirectUrl: Env.REDIRECT_URL,
+          serviceConfiguration: _serviceConfiguration));
+      
+          GetStorageHelper.removeCurrentUser();
+
+          setState(() {
+            userData = UserProfileModel();
+          });
+    } catch (_) {}
+    //_clearBusyState();
   }
 
   Widget firstPage() {

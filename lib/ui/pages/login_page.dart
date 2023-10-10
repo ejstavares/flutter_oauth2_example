@@ -28,19 +28,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      /*appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-        actions: [
-          IconButton(
-              onPressed: () {
-                const snackBar = SnackBar(content: Text('Hello, I am here'));
-               
-                ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              },
-              icon: const Icon(Icons.settings))
-        ],
-      ),*/
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -77,22 +64,13 @@ class _LoginPageState extends State<LoginPage> {
                       message:
                           'Login in progress... Please, wait for feedback!');
                 }
-                /*Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (_) => const HomePage(
-                              title: 'My Profile',
-                            )));*/
               },
-              child: Image.asset(
-                "assets/images/autentika.png",
-                height: 30,
-              ),
+              child: Text('LOGIN'),
             ),
           ),
           const SizedBox(
             height: 60,
-          )
+          ),
         ],
       ),
     );
@@ -137,12 +115,10 @@ class _LoginPageState extends State<LoginPage> {
           await _appAuth.authorizeAndExchangeCode(_authTokenRequestData);
 
       Utils.logger.i("token access::::: ${result?.accessToken}");
-      if (result != null) {
-        Utils.logger.i("accessToken: ${result.scopes}");
-      }
 
       var infoResponse = await getUserInfo(
-          accessToken: 'caeaff90-6bb2-3748-a202-79d580601a25');
+          accessToken: result?.accessToken ?? '',
+          idToken: result?.idToken ?? '');
       setState(() {
         _isLoading = false;
       });
@@ -162,7 +138,8 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  Future<bool> getUserInfo({required String accessToken}) async {
+  Future<bool> getUserInfo(
+      {required String accessToken, required String idToken}) async {
     var url =
         // Uri.https('jsonplaceholder.typicode.com', '/users/6', {'q': '{http}'});
         Uri.parse(Env.USERINFO_ENDPOINT);
@@ -178,6 +155,10 @@ class _LoginPageState extends State<LoginPage> {
       if (userInfo.name == null && userInfo.sub != null) {
         userInfo.name = userInfo.sub?.substring(0, userInfo.sub?.indexOf('@'));
       }
+
+      userInfo.idToken = idToken; // add idToken to use on logout
+      userInfo.token = accessToken;
+
       widget.callbackAction(userInfo);
       GetStorageHelper.addCurrentUser(user: userInfo);
 
